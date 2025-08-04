@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego para mi novio
+  </title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #d63384;
+      margin-top: 60%;
+      text-shadow: #d63384;
+    }
+    .heart {
+      font-size: 50px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .heart:hover {
+      transform: scale(1.2);
+    }
+    .message {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #555;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .btn-reset {
+      margin-top: 20px;
+      background: #d63384;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn-reset:hover {
+      background: #c9184a;
+    }
+.fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 95%;
+}
+
+.boton{
+      background: #d63384;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+}
+  </style>
+</head>
+<body>
+  <img class="fondo" src="42e31b22e3f32eec9a756e16cde0de0d.jpg">
+  <h1>Haz clic en el corazón para ver cuánto te amo</h1>
+  <div class="heart" onclick="mostrarMensaje()"> 💗</div>
+  <div class="message" id="mensaje">Haz clic en el corazón para empezar</div>
+  <button class="btn-reset" onclick="reiniciarJuego()">Reiniciar</button>
+<a href="../index.html" class="boton">Volver atrás</a>
+
+
+  <script>
+    const mensajes = [
+      "Eres mi persona favorita en el mundo",
+      "Contigo vivir es lo más bonito",
+      "Gracias por existir y estar en mi vida",
+      "Tu sonrisa es mi objetivo de por vida",
+      "Te amo más de lo que jamas te podrias imaginar",
+      "Eres mi razón de sonreír cada día y querer ser feliz",
+      "Si pudiera darte una estrella por cada vez que pienso en ti, te daria 1 porque jamas deje de pensar en ti",
+      "Conocerte fue lo mejor que me paso y jamas me arrepentire"
+    ];
+
+    let usado = [];
+
+    function mostrarMensaje() {
+      if (usado.length === mensajes.length) {
+        document.getElementById("mensaje").textContent = "Ya viste todos mis mensajes 💌";
+        return;
+      }
+
+      let index;
+      do {
+        index = Math.floor(Math.random() * mensajes.length);
+      } while (usado.includes(index));
+
+      usado.push(index);
+      document.getElementById("mensaje").textContent = mensajes[index];
+    }
+
+    function reiniciarJuego() {
+      usado = [];
+      document.getElementById("mensaje").textContent = "Haz clic en el corazón para empezar ";
+    }
+  </script>
+</body>
+</html>
